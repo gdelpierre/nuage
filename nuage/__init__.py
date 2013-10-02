@@ -31,6 +31,8 @@ from pyramid_beaker import set_cache_regions_from_settings
 
 from pyramid.threadlocal import get_current_registry
 
+from nuage.predicate import LoggedPredicate
+
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
@@ -45,6 +47,8 @@ def main(global_config, **settings):
 
     config.add_route('signup', '/signup')
     config.add_route('submitSignup', '/signup/submit')
+
+    config.add_view_predicate('logged', LoggedPredicate)
 
     for include in ['pyramid_chameleon', \
                     'pyramid_fanstatic', \
