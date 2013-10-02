@@ -56,18 +56,68 @@ def home(request):
     """
     return {'project': 'nuage'}
 
-@view_config(route_name='signup', renderer='templats/signup')
+@view_config(route_name='signup', renderer='templates/signup')
 def signup(request):
-    pass
+    """
+    Signup template.
+    """
+    return {}
 
 @view_config(route_name='submitSignup')
 def submitSignup(request):
-    pass
+    """
+    Signup action.
+    """
+    try:
+        User.get(request.POST['login'])
+    except couchdbkit.exceptions.ResourceNotFound:
+        pass
+    else:
+        request.session.flash(u"Username already exist")
+        return HTTPFound(location=request.route_path('signup'))
+
+    if not request.POST['password'].strip():
+        request.session.flash(u"Please set a password")
+        return HTTPFound(location=request.route_path('signup'))
+
+    if not len(request.POST['password'].strip()) >= 8:
+        request.session.flash(u"Password must have at least 8 characters")
+        return HTTPFound(location=request.route_path('signup'))
+
+    if request.POST['password'] == request.POST['confirmPassword']:
+        password = bcrypt.hashpw(request.POST['password'].encode('utf-8'), \
+                                 bcrypt.gensalt(rounds=14))
+
+        user = User(password=password, \
+                    name=request.POST['name'], \
+                    description=request.POST['description'], \
+                    mail=request.POST['email'], \
+                    random=random.randint(1,1000000000), \
+                    checked = False \
+                    )
+        user._id = request.POST['login']
+        user.save()
+
+        confirm_link = request.route_url('checkLogin', \
+                                        userid = user._id, \
+                                        randomid = user.random)
+
+        mailer = Mailer()
+        message = Message(subject="Your subsription !", \
+                          sender=settings['mail_from'], \
+                          recipients=[request.POST['email']], \
+                          body="Confirm the link\n\n%s" % confirm_link)
+        mailer.send_immediately(message, fail_silently=False)
+
+        return {'name': request.POST['name']}
+
+    else:
+        return HTTPFound(location=request.route_path('signup'))
 
 @view_config(route_name='submitLogin')
 def submitLogin(request):
     """
-    Log in
+    Log in action.
     """
     try:
         User.get(request.POST['login'])
