@@ -29,6 +29,7 @@ from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPFound
 from pyramid.httpexceptions import HTTPNotFound
 from pyramid.threadlocal import get_current_registry
+from pyramid.response import Response
 
 import couchdbkit
 from couchdbkit.designer import push
