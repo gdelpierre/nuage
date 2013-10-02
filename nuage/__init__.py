@@ -36,7 +36,7 @@ from nuage.predicate import LoggedPredicate
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
-    config = Configurator(settings=settings)
+    config = Configurator(settings=settings, autocommit=True)
 
     get_current_registry().settings = settings
     
