@@ -127,12 +127,12 @@ def submitLogin(request):
 
     if not request.POST['password'].strip():
         request.session.flash(u"Wrong password")
-        return HTTPFound(location=request.route_path('home_notlog'))
+        return HTTPFound(location=request.route_path('home'))
 
     if bcrypt.hashpw(request.POST['password'].encode('utf-8'), \
                      user.password) != user.password:
         request.session.flash(u"Wrong password")
-        return HTTPFound(location=request.route_path('home_notlog'))
+        return HTTPFound(location=request.route_path('home'))
 
     request.session['login'] = user._id
     request.session.save()
