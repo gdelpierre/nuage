@@ -10,7 +10,7 @@
     <meta name="keywords" content="cloud pyramid python web application" />
     <meta name="description" content="cloud using pyramid web application" />
     <link rel="shortcut icon" 
-          href="${request.static_url('cloud:static/favicon.ico')}" />
+          href="${request.static_url('nuage:static/favicon.ico')}" />
   </head>
   
   <body>
