@@ -40,19 +40,29 @@ db = server.get_or_create_db(settings['couchdb.db'])
 
 User.set_db(db)
 
-@view_config(route_name='home_notlog', renderer='templates/home_notlog.pt')
+@view_config(route_name='home', renderer='templates/home_notlog.pt', \
+             logged=False)
 def home_notlog(request):
     """
     Default homepage.
     """
     return {'project': 'nuage'}
 
-@view_config(route_name='home', renderer='templates/home.pt')
+@view_config(route_name='home', renderer='templates/home_log.pt', \
+             logged=True)
 def home(request):
     """
     Homepage when you're loggued.
     """
     return {'project': 'nuage'}
+
+@view_config(route_name='signup', renderer='templats/signup')
+def signup(request):
+    pass
+
+@view_config(route_name='submitSignup')
+def submitSignup(request):
+    pass
 
 @view_config(route_name='submitLogin')
 def submitLogin(request):
