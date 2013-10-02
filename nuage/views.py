@@ -28,11 +28,14 @@
 from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPFound
 from pyramid.httpexceptions import HTTPNotFound
+from pyramid.threadlocal import get_current_registry
 
 import couchdbkit
 from couchdbkit.designer import push
 
 from nuage.models.user import User
+
+settings = get_current_registry().settings
 
 # Couchdb
 server = couchdbkit.Server(settings['couchdb.url'])
