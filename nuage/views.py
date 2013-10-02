@@ -49,7 +49,7 @@ def home_notlog(request):
     """
     Default homepage.
     """
-    return {'project': 'nuage'}
+    return {}
 
 @view_config(route_name='home', renderer='templates/home_log.pt', \
              logged=True)
@@ -57,7 +57,7 @@ def home(request):
     """
     Homepage when you're loggued.
     """
-    return {'project': 'nuage'}
+    return {}
 
 @view_config(route_name='signup', renderer='templates/signup')
 def signup(request):
