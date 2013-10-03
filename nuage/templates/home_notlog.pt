@@ -13,24 +13,27 @@
           href="${request.static_url('nuage:static/favicon.ico')}" />
   </head>
   
-  <body>
-      <form class="form-horizontal">
-          <div class="control-group">
-              <div class="controls">
-                  <input class="col-md-4" type="text" 
-                         name="inputLogin" id="inputLogin"
-                         placeholder="Login"/>
-              </div>
-          </div>
-          <div class="control-group">
-              <div class="controls">
-                  <input class="col-md-4" type="text" 
-                         name="inputPwd" id="inputPwd"
-                         placeholder="Password"/>
-              </div>
-          </div>
-    <input class="col-md-3 btn btn-success" type="submit" name="submit" 
-           id="submit" i18n:translate='' value='Log in' />
-      </form>
-</body>
+    <body>
+        <form>
+            <div class="input-prepend">
+                <p class="text-center">
+                <span class="add-on"><i class="icon-envelope"></i></span>
+                <input class="span2" type="text" placeholder="Username">
+                </p>
+            </div>
+            <div class="input-prepend">
+                <p class="text-center">
+                <span class="add-on"><i class="icon-key"></i></span>
+                <input class="span2" type="password" placeholder="Password">
+                </p>
+            </div>
+            <div class="input-prepend">
+                <p class="text-center">
+                <input class="col-md-2 btn btn-success" type="submit" 
+                       name="submit"  id="submit" 
+                       i18n:translate='' value='Log in' />
+                </p>
+            </div>
+        </form>
+    </body>
 </html>

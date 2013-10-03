@@ -46,14 +46,14 @@ User.set_db(db)
 
 @view_config(route_name='home', renderer='templates/home_notlog.pt', \
              logged=False)
-def home_notlog(request):
+def home(request):
     """
     Default homepage.
     """
     return {}
 
-@view_config(route_name='home', renderer='templates/home_log.pt', \
-             logged=True)
+@view_config(route_name='home', renderer='templates/home_notlog.pt', \
+             logged=False)
 def home(request):
     """
     Homepage when you're loggued.

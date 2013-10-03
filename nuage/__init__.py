@@ -54,8 +54,14 @@ def main(global_config, **settings):
                     'pyramid_fanstatic', \
                     'pyramid_mailer', \
                     'pyramid_beaker', \
+                    'rebecca.fanstatic', \
                     ]:
         config.include(include)
+
+    config.add_fanstatic_resources(['js.bootstrap.bootstrap',
+                                    'js.bootstrap.bootstrap_theme',
+                                    'css.fontawesome.fontawesome',
+                                    ], r'.*\.pt')
 
     config.scan()
     return config.make_wsgi_app()
