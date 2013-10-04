@@ -60,7 +60,7 @@ def home(request):
     """
     return {}
 
-@view_config(route_name='signup', renderer='templates/signup')
+@view_config(route_name='signup', renderer='templates/signup.pt')
 def signup(request):
     """
     Signup template.
