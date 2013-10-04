@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xml:lang="en" 
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+      
+  <head>
+    <title>My Plop Cloud</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <meta name="keywords" content="cloud pyramid python web application" />
+    <meta name="description" content="cloud using pyramid web application" />
+    <link rel="shortcut icon" 
+          href="${request.static_url('nuage:static/favicon.ico')}" />
+  </head>
+  
+    <body>
+        <form>
+            <div class="input-prepend">
+                <p class="text-center">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input class="span2" type="text" id="username"
+                       i18n:translate='' placeholder="Username">
+                </p>
+            </div>
+            <div class="input-prepend">
+                <p class="text-center">
+                <span class="add-on"><i class="icon-envelope"></i></span>
+                <input class="span2" type="text" id="emailAddress"
+                       i18n:translate='' placeholder="Email address">
+                </p>
+            </div>
+            <div class="input-prepend">
+                <p class="text-center">
+                <span class="add-on"><i class="icon-key"></i></span>
+                <input class="span2" type="password" id="initialPassword"
+                       i18n:translate='' placeholder="Password">
+                </p>
+            </div>
+            <div class="input-prepend">
+                <p class="text-center">
+                <span class="add-on"><i class="icon-key"></i></span>
+                <input class="span2" type="password" id=confirmPassword 
+                       i18n:translate='' placeholder="Confirm Password">
+                </p>
+            </div>
+            <div class="input-prepend">
+                <p class="text-center">
+                <input class="col-md-2 btn btn-success" type="submit" 
+                       name="signup"  id="signup" 
+                       i18n:translate='' value="Sign up!" />
+                </p>
+            </div>
+        </form>
+    </body>
+</html>
