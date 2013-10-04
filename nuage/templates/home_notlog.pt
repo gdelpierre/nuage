@@ -27,6 +27,11 @@
                 <input class="span2" type="password" placeholder="Password">
                 </p>
             </div>
+            <div>
+                <p class="text-center">
+                <a href="/signup"> No account yet?</a>
+                </p>
+            </div>
             <div class="input-prepend">
                 <p class="text-center">
                 <input class="col-md-2 btn btn-success" type="submit" 
